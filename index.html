@@ -43,7 +43,7 @@
 				.then(res => res.json())
 		]);
 
-		// For the initial prototype we will combune tags and categories and treat them as categories.
+		// For the initial prototype we will combine tags and categories and treat them as just plain tags.
 		// Todo: define what we want to do when a user selects categories / about pages in the nav.
 		const allTagsAndCategories = [].concat(tagData, categoryData);
 
@@ -136,7 +136,6 @@
 			currentTarget.classList.toggle('js-checkbox--checked');
 
 			const checkedBoxes = Array.from(document.querySelectorAll(`.js-checkbox--checked`));
-
 			if (!checkedBoxes.length) {
 				// If no tags are selected in the navigation, make any hidden cards visible
 				Array.from(document.querySelectorAll('.js-card.dn'))
