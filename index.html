@@ -51,7 +51,7 @@
 			.map(tagId => data.find(tag => tag.id === tagId).name)
 			.map(name => name.toLowerCase().replace(' ', '-'));
 
-		const fullYear = post => new Date(post.date).getFullYear();
+		const fullYear = date => new Date(date).getFullYear();
 
 		postData.forEach(({ tags, categories, title, date}) => {
 			// Create card element
