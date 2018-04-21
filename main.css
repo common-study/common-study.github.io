@@ -1,0 +1,9 @@
+html {
+	font-family: Arial;
+}
+.js-card {
+	transition: all .25s ease-in-out;
+}
+.js-checkbox--checked div {
+	background: red;
+}
