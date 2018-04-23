@@ -4,7 +4,7 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-	entry: [ 'babel-polyfill', './src/main.js' ],
+	entry: [ 'babel-polyfill', './src/index.js' ],
 
 	output: {
 		filename: '[name].bundle.js',
@@ -28,5 +28,13 @@ module.exports = {
 		]
 	},
 
-	plugins: [new UglifyJSPlugin()]
+	plugins: [
+		new UglifyJSPlugin()
+	],
+
+	resolve: {
+        alias: {
+			'react': 'preact-compat'
+		}
+    }
 };
