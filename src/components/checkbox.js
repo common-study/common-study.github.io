@@ -19,9 +19,11 @@ export class Checkbox extends Component {
 
     render (props, state) {
         return (
-            <div class={`js-checkbox w-25 ${state.isChecked ? 'js-checkbox--checked' : ''}`} onClick={this.handleClick.bind(this)}>
-                <div class="w1 h1 ba dib"></div>
-                <span>{ props.value }</span>
+            <div class={`js-checkbox ma2 f6 w-25 ${state.isChecked ? 'js-checkbox--checked' : ''}`}>
+                <div class="flex items-center pointer" onClick={this.handleClick.bind(this)}>
+                    <div class="tickbox ba"></div>
+                    <span class="ml1">{ props.value }</span>
+                </div>
             </div>
         );
     }

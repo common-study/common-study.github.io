@@ -11,7 +11,7 @@ export const App = props =>
             render={({location}) => {
                 const query = parse(location.search);
                 return query.post
-                    ? <Post post={ props.postData.find(post => post.slug === query.post) } />
+                    ? <Post post={ props.postData.find(post => post.slug === query.post) } {...props} />
                     : <Home {...props} />
             }}
         />

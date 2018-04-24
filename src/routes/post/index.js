@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { Link } from 'react-router-dom';
-import { formattedDate } from '../../lib/utils';
+import { formattedDate, tagNamesFromIds } from '../../lib/utils';
 
 export const Post = props =>
     <div>
@@ -11,14 +11,15 @@ export const Post = props =>
 
                 <div>Published on: { formattedDate(props.post.date) }</div>
 
-                <div>By</div>
-
-                <div>Theme</div>
-
-                <div>Type</div>
+                <ul>{
+                    tagNamesFromIds(
+                        [].concat(props.post.tags, props.post.categories),
+                        [].concat(props.tagData, props.categoryData)
+                    ).map(tag => <li>{tag}</li>)
+                }</ul>
 
             </section>
-            <section class="pl5 w-two-thirds">
+            <section class="pl2 w-two-thirds">
                 <h1>{ props.post.title.rendered }</h1>
                 <div class="measure" dangerouslySetInnerHTML={{__html: props.post.content.rendered}} />
             </section>

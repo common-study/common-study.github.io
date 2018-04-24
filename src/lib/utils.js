@@ -1,6 +1,6 @@
 export const uniqueArray = array => [...new Set(array)];
 
-export const formattedTag = tag => String(tag).toLowerCase().replace(' ', '-');
+export const formattedTag = tag => String(tag).toLowerCase().replace(/ /g, '-');
 
 export const fullYear = date => new Date(date).getFullYear();
 
