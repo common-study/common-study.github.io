@@ -4,9 +4,9 @@ import { formattedDate, tagNamesFromIds } from '../../lib/utils';
 
 export const Post = props =>
     <div>
-        <header class="h3"><Link to="/">common study</Link></header>
+        <header class="pa4"><Link to="/">common study</Link></header>
         <main class="flex">
-            <section class="w-third">
+            <section class="w-third pa4">
                 { props.post.featured_media ? <img src={props.post.featured_media_url} /> : null }
 
                 <div>Published on: { formattedDate(props.post.date) }</div>
@@ -19,7 +19,7 @@ export const Post = props =>
                 }</ul>
 
             </section>
-            <section class="pl2 w-two-thirds">
+            <section class="pa4 w-two-thirds">
                 <h1>{ props.post.title.rendered }</h1>
                 <div class="measure" dangerouslySetInnerHTML={{__html: props.post.content.rendered}} />
             </section>
