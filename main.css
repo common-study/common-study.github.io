@@ -1,0 +1,17 @@
+html {
+	font-family: Arial;
+}
+.js-card {
+	transition: all .25s ease-in-out;
+}
+.js-checkbox--checked .tickbox {
+	background: red;
+}
+.tickbox {
+	height: 10px;
+	width: 10px;
+}
+
+.js-card div {
+	margin: 10px 0;
+}
