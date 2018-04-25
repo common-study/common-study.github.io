@@ -3,15 +3,15 @@ html {
 }
 
 .js-card {
-	transition: all .25s ease-in-out;
+	transition: all 0.25s ease-in-out;
 }
 
 .js-checkbox--checked .tickbox:before {
 	content: '';
-    width: 35px;
-    height: 35px;
-    background-image: url(./assets/tick.png);
-    background-size: contain;
+	width: 35px;
+	height: 35px;
+	background-image: url(./assets/tick.png);
+	background-size: contain;
 	position: absolute;
 	left: -10px;
 	top: -20px;
