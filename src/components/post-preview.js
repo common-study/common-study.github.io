@@ -11,17 +11,17 @@ export class PostPreview extends Component {
         this.setState({isActive: !this.state.isActive})
     }
 
-    render (props, state) {
+    render ({ post }, {isActive}) {
         return (
             <div
-                class={`js-card ba ma3 pa2 ${ state.isActive ? 'w-50' : 'w-25 h3 pointer'}`}
+                class={`js-card ba ma3 pa2 ${ isActive ? 'w-50' : 'w-25 h3 pointer'}`}
                 onClick={this.handleClick.bind(this)}
             >
-                <h3>{ props.post.title.rendered }</h3>
-                { state.isActive ?
+                <h3>{ post.title.rendered }</h3>
+                { isActive ?
                     <div>
-                        <div dangerouslySetInnerHTML={{__html: props.post.content.rendered}} />
-                        <Link to={`/?post=${props.post.slug}`}>more</Link>
+                        <div dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                        <Link to={`/?post=${post.slug}`}>more</Link>
                     </div>
                 : null }
             </div>

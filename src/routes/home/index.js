@@ -17,23 +17,23 @@ export class Home extends Component {
         this.setState({selectedTags: this.state.selectedTags.filter(selectedTag => selectedTag !== tag)})
     }
 
-    render (props, state) {
-        const posts = state.selectedTags.length
-            ? props.postData.filter(post =>
+    render ({ posts, tags, categories }, { selectedTags }) {
+        const selectedPosts = selectedTags.length
+            ? posts.filter(post =>
                 tagNamesFromIds(
                     [].concat(post.tags, post.categories),
-                    [].concat(props.tagData, props.categoryData)
+                    [].concat(tags, categories)
                 )
                     .concat(formattedTag(fullYear(post.date)))
-                    .some(tag => state.selectedTags.includes(tag))
+                    .some(tag => selectedTags.includes(tag))
             )
-            : props.postData;
+            : posts;
         return (
             <div class="flex vh-100">
-                <Nav {...props} selectTag={this.selectTag.bind(this)} deselectTag={this.deselectTag.bind(this)}/>
+                <Nav {...{ posts, tags, categories, selectTag: this.selectTag.bind(this), deselectTag: this.deselectTag.bind(this) }} />
                 <main class="dib v-top w-two-thirds">
                     <div class="js-posts-container flex flex-wrap pa3">
-                        { posts.map(post => <PostPreview post={post} {...props} />) }
+                        { selectedPosts.map(post => <PostPreview post={post} />) }
                     </div>
                 </main>
             </div>

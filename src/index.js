@@ -1,17 +1,16 @@
 import { h, render } from 'preact';
 import { App } from './components/app';
 
-export const data = () => Promise.all([
-	fetch('https://public-api.wordpress.com/wp/v2/sites/commonstudy.wordpress.com/tags?per_page=100')
-		.then(res => res.json()),
-	fetch('https://public-api.wordpress.com/wp/v2/sites/commonstudy.wordpress.com/posts?per_page=100')
-		.then(res => res.json()),
-	fetch('https://public-api.wordpress.com/wp/v2/sites/commonstudy.wordpress.com/categories?per_page=100')
-		.then(res => res.json())
+const fetchContent = type => fetch(`https://public-api.wordpress.com/wp/v2/sites/commonstudy.wordpress.com/${type}?per_page=100`)
+	.then(res => res.json())
+
+export const content = () => Promise.all([
+	fetchContent('posts'),
+	fetchContent('tags'),
+	fetchContent('categories')
 ]);
 
 (async () => {
-	const [ tagData, postData, categoryData ] = await data();
-	const initialState = { tagData, postData, categoryData };
-    render(<App {...initialState} />, document.body);
+	const [ posts, tags, categories ] = await content();
+  render(<App {...{ posts, tags, categories }} />, document.body);
 })()

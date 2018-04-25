@@ -10,9 +10,12 @@ export const App = props =>
             path="/"
             render={({location}) => {
                 const query = parse(location.search);
-                return query.post
-                    ? <Post post={ props.postData.find(post => post.slug === query.post) } {...props} />
-                    : <Home {...props} />
+                if (query.post) {
+                    const post = props.posts.find(post => post.slug === query.post);
+                    return <Post post={post} {...props} />
+                } else {
+                    return <Home {...props} />
+                }
             }}
         />
     </BrowserRouter>
