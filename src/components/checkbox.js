@@ -17,12 +17,12 @@ export class Checkbox extends Component {
         }
     }
 
-    render (props, state) {
+    render ({ value }, { isChecked }) {
         return (
-            <div class={`js-checkbox ma2 f6 w-25 ${state.isChecked ? 'js-checkbox--checked' : ''}`}>
+            <div class={`js-checkbox ma2 f6 w-25 ${isChecked ? 'js-checkbox--checked' : ''}`}>
                 <div class="flex items-center pointer" onClick={this.handleClick.bind(this)}>
                     <div class="tickbox ba"></div>
-                    <span class="ml1">{ props.value }</span>
+                    <span class="ml1">{ value }</span>
                 </div>
             </div>
         );
