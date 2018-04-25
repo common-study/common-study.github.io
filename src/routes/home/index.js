@@ -18,7 +18,6 @@ export class Home extends Component {
     }
 
     render ({ posts, tags, categories }, { selectedTags }) {
-        console.log({ posts, tags, categories })
         const selectedPosts = selectedTags.length
             ? posts.filter(post =>
                 tagNamesFromIds(
@@ -34,7 +33,7 @@ export class Home extends Component {
                 <Nav {...{ posts, tags, categories, selectTag: this.selectTag.bind(this), deselectTag: this.deselectTag.bind(this) }} />
                 <main class="dib v-top w-two-thirds">
                     <div class="js-posts-container flex flex-wrap pa3">
-                        { selectedPosts.map(post => console.log(post) || <PostPreview post={post} />) }
+                        { selectedPosts.map(post => <PostPreview post={post} />) }
                     </div>
                 </main>
             </div>
