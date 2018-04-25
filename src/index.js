@@ -12,5 +12,5 @@ export const content = () => Promise.all([
 
 (async () => {
 	const [ posts, tags, categories ] = await content();
-    render(<App {...{ posts, tags, categories }} />, document.body);
+  render(<App {...{ posts, tags, categories }} />, document.body);
 })()

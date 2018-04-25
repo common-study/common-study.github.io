@@ -1,9 +1,11 @@
 html {
 	font-family: Arial;
 }
+
 .js-card {
 	transition: all .25s ease-in-out;
 }
+
 .js-checkbox--checked .tickbox:before {
 	content: '';
     width: 35px;
@@ -15,6 +17,7 @@ html {
 	top: -20px;
 	background-repeat: no-repeat;
 }
+
 .tickbox {
 	height: 10px;
 	min-width: 10px;
