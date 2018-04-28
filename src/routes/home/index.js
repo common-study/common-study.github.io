@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Nav } from '../../components/nav';
-import { PostPreview } from '../../components/post-preview';
+import { Main } from '../../components/main';
 import { fullYear, formattedTag, tagNamesFromIds } from '../../lib/utils';
 import { bind } from 'decko';
 
@@ -46,11 +46,7 @@ export class Home extends Component {
 						deselectTag: this.deselectTag
 					}}
 				/>
-				<main class="dib v-top w-two-thirds">
-					<div class="js-posts-container flex flex-wrap pa3">
-						{selectedPosts.map(post => <PostPreview post={post} />)}
-					</div>
-				</main>
+				<Main selectedPosts={selectedPosts} />
 			</div>
 		);
 	}

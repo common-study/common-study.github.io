@@ -16,10 +16,12 @@ export class PostPreview extends Component {
 	render({ post }, { isActive }) {
 		return (
 			<div
-				class={`js-card ba ma3 pa2 ${
-					isActive ? 'w-50' : 'w-25 h3 pointer'
-				}`}
+				class="js-card ba pa2"
 				onClick={this.handleClick}
+				style={{
+					width: isActive ? '33rem' : '100%',
+					background: 'white'
+				}}
 			>
 				<h3>{post.title.rendered}</h3>
 				{isActive ? (
