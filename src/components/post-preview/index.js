@@ -17,11 +17,8 @@ export class PostPreview extends Component {
 	render({ post }, { isActive }) {
 		return (
 			<div
-				class={styles.card}
+				class={isActive ? styles.cardActive : styles.cardNormal}
 				onClick={this.handleClick}
-				style={{
-					width: isActive ? '33rem' : '100%'
-				}}
 			>
 				<h3>{post.title.rendered}</h3>
 				{isActive ? (

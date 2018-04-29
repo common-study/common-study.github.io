@@ -1,0 +1,9 @@
+.post {
+	position: absolute;
+	background: white;
+	width: 16rem;
+}
+
+.wrapper {
+	margin: 10px;
+}

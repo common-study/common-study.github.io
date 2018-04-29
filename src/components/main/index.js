@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import { Motion, spring, presets } from 'react-motion';
 import { PostPreview } from '../post-preview';
+import styles from './styles.css';
 
 const ROW_LENGTH = 3;
 const BOX_HEIGHT = 5;
@@ -24,18 +25,16 @@ const style = index => ({
 });
 
 export const Main = ({ selectedPosts }) => (
-	<main class="dib v-top w-two-thirds ma3">
+	<main class={styles.wrapper}>
 		{selectedPosts.map((post, index) => (
 			<Motion key={post.id} style={style(index)}>
 				{({ translateX, translateY }) => (
 					<div
+						class={styles.post}
 						style={{
 							transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
 							zIndex:
-								index === 0 ? 99 : selectedPosts.length - index,
-							width: `${BOX_WIDTH}rem`,
-							position: 'absolute',
-							background: 'white'
+								index === 0 ? 99 : selectedPosts.length - index
 						}}
 					>
 						<PostPreview post={post} />

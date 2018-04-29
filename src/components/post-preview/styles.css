@@ -7,3 +7,13 @@
 .card div {
 	margin: 10px 0;
 }
+
+.cardNormal {
+	composes: card;
+	width: 100%;
+}
+
+.cardActive {
+	composes: card;
+	width: 33rem;
+}

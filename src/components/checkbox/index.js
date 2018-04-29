@@ -22,17 +22,14 @@ export class Checkbox extends Component {
 
 	render({ value }, { isChecked }) {
 		return (
-			<div class={`foo js-checkbox ma2 f6 w-25`}>
-				<div
-					class="flex items-center pointer"
-					onClick={this.handleClick}
-				>
+			<div class={styles.wrapper}>
+				<div class={styles.inside} onClick={this.handleClick}>
 					<div
-						class={`${styles.tickbox} ${
-							isChecked ? styles.tickboxActive : ''
-						}`}
+						class={
+							isChecked ? styles.tickboxActive : styles.tickbox
+						}
 					/>
-					<span class="ml1">{value}</span>
+					<span class={styles.ml1}>{value}</span>
 				</div>
 			</div>
 		);

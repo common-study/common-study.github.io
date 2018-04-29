@@ -1,10 +1,11 @@
 import { h } from 'preact';
 import { Checkbox } from '../checkbox';
 import { uniqueArray } from '../../lib/utils';
+import styles from './styles.css';
 
 export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
-	<nav class="w-third dib bg-white br relative">
-		<div class="flex flex-wrap">
+	<nav class={styles.nav}>
+		<div class={styles.tagGroup}>
 			{uniqueArray(
 				posts.map(({ date }) => new Date(date).getFullYear())
 			).map(date => (
@@ -15,7 +16,7 @@ export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
 				/>
 			))}
 		</div>
-		<div class="js-categories-container flex flex-wrap">
+		<div class={styles.tagGroup}>
 			{categories.map(({ name }) => (
 				<Checkbox
 					value={name}
@@ -24,7 +25,7 @@ export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
 				/>
 			))}
 		</div>
-		<div class="js-tags-container flex flex-wrap">
+		<div class={styles.tagGroup}>
 			{tags.map(({ name }) => (
 				<Checkbox
 					value={name}
