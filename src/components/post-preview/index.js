@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import { Link } from 'react-router-dom';
 import { bind } from 'decko';
+import styles from './styles.css';
 
 export class PostPreview extends Component {
 	constructor() {
@@ -16,11 +17,10 @@ export class PostPreview extends Component {
 	render({ post }, { isActive }) {
 		return (
 			<div
-				class="js-card ba pa2"
+				class={styles.card}
 				onClick={this.handleClick}
 				style={{
-					width: isActive ? '33rem' : '100%',
-					background: 'white'
+					width: isActive ? '33rem' : '100%'
 				}}
 			>
 				<h3>{post.title.rendered}</h3>

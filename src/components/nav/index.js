@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { Checkbox } from './checkbox';
-import { uniqueArray } from '../lib/utils';
+import { Checkbox } from '../checkbox';
+import { uniqueArray } from '../../lib/utils';
 
 export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
 	<nav class="w-third dib bg-white br relative">

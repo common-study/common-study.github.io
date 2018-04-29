@@ -1,0 +1,9 @@
+.card {
+	background: white;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.card div {
+	margin: 10px 0;
+}

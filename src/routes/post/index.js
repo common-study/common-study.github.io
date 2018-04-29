@@ -1,9 +1,10 @@
 import { h } from 'preact';
 import { Link } from 'react-router-dom';
 import { formattedDate, tagNamesFromIds } from '../../lib/utils';
+import styles from './styles.css';
 
 export const Post = ({ tags, categories, post }) => (
-	<div>
+	<div class={styles.wrapper}>
 		<header class="pa4">
 			<Link to="/">common study</Link>
 		</header>

@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { Motion, spring, presets } from 'react-motion';
-import { PostPreview } from './post-preview';
+import { PostPreview } from '../post-preview';
 
 const ROW_LENGTH = 3;
 const BOX_HEIGHT = 5;

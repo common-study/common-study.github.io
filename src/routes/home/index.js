@@ -3,6 +3,7 @@ import { Nav } from '../../components/nav';
 import { Main } from '../../components/main';
 import { fullYear, formattedTag, tagNamesFromIds } from '../../lib/utils';
 import { bind } from 'decko';
+import styles from './styles.css';
 
 export class Home extends Component {
 	constructor() {
@@ -36,7 +37,7 @@ export class Home extends Component {
 			  )
 			: posts;
 		return (
-			<div class="flex vh-100">
+			<div class={styles.wrapper}>
 				<Nav
 					{...{
 						posts,
