@@ -10,7 +10,7 @@ const Header = () => (
 );
 
 const PostDetails = ({ post, tags, categories }) => (
-	<section class={styles.postDetails}>
+	<section class={styles.pa}>
 		{post.featured_media ? <img src={post.featured_media_url} /> : null}
 
 		<div>Published on: {formattedDate(post.date)}</div>
@@ -25,10 +25,10 @@ const PostDetails = ({ post, tags, categories }) => (
 );
 
 const Post = ({ post }) => (
-	<section class={styles.post}>
+	<section class={styles.pa}>
 		<h1>{post.title.rendered}</h1>
 		<div
-			class={styles.postContent}
+			class={styles.measure}
 			dangerouslySetInnerHTML={{ __html: post.content.rendered }}
 		/>
 	</section>
@@ -37,9 +37,13 @@ const Post = ({ post }) => (
 export const PostPage = ({ tags, categories, post }) => (
 	<div class={styles.wrapper}>
 		<Header />
-		<main class={styles.flex}>
-			<PostDetails {...{ post, tags, categories }} />
-			<Post post={post} />
+		<main>
+			<div class={styles.wOneThird}>
+				<PostDetails {...{ post, tags, categories }} />
+			</div>
+			<div class={styles.wTwoThirds}>
+				<Post post={post} />
+			</div>
 		</main>
 	</div>
 );
