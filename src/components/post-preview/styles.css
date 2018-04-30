@@ -1,19 +1,15 @@
-.card {
-	background: white;
-	border: 1px solid black;
-	padding: 10px;
+.base {
+	background: inherit;
+	transition: width 0.1s ease-in;
+	cursor: pointer;
 }
 
-.card div {
-	margin: 10px 0;
-}
-
-.cardNormal {
-	composes: card;
+.inactive {
+	composes: base;
 	width: 100%;
 }
 
-.cardActive {
-	composes: card;
+.active {
+	composes: base;
 	width: 33rem;
 }

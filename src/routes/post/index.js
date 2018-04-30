@@ -1,16 +1,11 @@
 import { h } from 'preact';
-import { Link } from 'react-router-dom';
+import { Header } from '../../components/header';
 import { formattedDate, tagNamesFromIds } from '../../lib/utils';
 import styles from './styles.css';
-
-const Header = () => (
-	<header class={styles.header}>
-		<Link to="/">common study</Link>
-	</header>
-);
+import atoms from '../../style/atoms.css';
 
 const PostDetails = ({ post, tags, categories }) => (
-	<section class={styles.pa}>
+	<section class={atoms.pa}>
 		{post.featured_media ? <img src={post.featured_media_url} /> : null}
 
 		<div>Published on: {formattedDate(post.date)}</div>
@@ -25,10 +20,10 @@ const PostDetails = ({ post, tags, categories }) => (
 );
 
 const Post = ({ post }) => (
-	<section class={styles.pa}>
+	<section class={atoms.pa}>
 		<h1>{post.title.rendered}</h1>
 		<div
-			class={styles.measure}
+			class={`${atoms.measure} ${atoms.wpContent}`}
 			dangerouslySetInnerHTML={{ __html: post.content.rendered }}
 		/>
 	</section>
@@ -37,11 +32,11 @@ const Post = ({ post }) => (
 export const PostPage = ({ tags, categories, post }) => (
 	<div class={styles.wrapper}>
 		<Header />
-		<main>
-			<div class={styles.wOneThird}>
+		<main class={atoms.central}>
+			<div class={atoms.wOneThird}>
 				<PostDetails {...{ post, tags, categories }} />
 			</div>
-			<div class={styles.wTwoThirds}>
+			<div class={atoms.wTwoThirds}>
 				<Post post={post} />
 			</div>
 		</main>

@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { parse } from 'query-string';
-import { Home } from '../routes/home';
-import { PostPage } from '../routes/post';
+import { Home } from '../../routes/home';
+import { PostPage } from '../../routes/post';
 
 export const App = props => (
 	<BrowserRouter>

@@ -1,5 +1,6 @@
 import { h, render } from 'preact';
 import { App } from './components/app';
+import './style/normalise.css';
 
 const fetchContent = type =>
 	fetch(

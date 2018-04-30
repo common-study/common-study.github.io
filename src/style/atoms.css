@@ -1,0 +1,40 @@
+.pa {
+	padding: 10px;
+}
+
+.w {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.wTwoThirds {
+	composes: w;
+	width: calc(100% / 3 * 2);
+}
+
+.wOneThird {
+	composes: w;
+	width: calc(100% / 3);
+}
+
+.measure {
+	max-width: 30em;
+}
+
+.flex {
+	display: flex;
+}
+
+.central {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.wpContent div {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ba {
+	border: 1px solid black;
+}

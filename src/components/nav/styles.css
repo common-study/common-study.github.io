@@ -1,7 +1,6 @@
 .nav {
 	width: calc(100% / 3);
 	display: inline-block;
-	background: white;
 	position: relative;
 	border-right: 1px black solid;
 }

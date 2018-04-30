@@ -2,6 +2,8 @@ import { h, Component } from 'preact';
 import { Link } from 'react-router-dom';
 import { bind } from 'decko';
 import styles from './styles.css';
+import atoms from '../../style/atoms.css';
+import cx from 'classnames';
 
 export class PostPreview extends Component {
 	constructor() {
@@ -17,13 +19,18 @@ export class PostPreview extends Component {
 	render({ post }, { isActive }) {
 		return (
 			<div
-				class={isActive ? styles.cardActive : styles.cardNormal}
+				class={cx(
+					atoms.ba,
+					atoms.pa,
+					isActive ? styles.active : styles.inactive
+				)}
 				onClick={this.handleClick}
 			>
 				<h3>{post.title.rendered}</h3>
 				{isActive ? (
 					<div>
 						<div
+							class={atoms.wpContent}
 							dangerouslySetInnerHTML={{
 								__html: post.content.rendered
 							}}
