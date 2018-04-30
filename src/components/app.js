@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { parse } from 'query-string';
 import { Home } from '../routes/home';
-import { Post } from '../routes/post';
+import { PostPage } from '../routes/post';
 
 export const App = props => (
 	<BrowserRouter>
@@ -15,7 +15,7 @@ export const App = props => (
 					const post = props.posts.find(
 						post => post.slug === query.post
 					);
-					return <Post post={post} {...props} />;
+					return <PostPage post={post} {...props} />;
 				} else {
 					return <Home {...props} />;
 				}
