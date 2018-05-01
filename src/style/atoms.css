@@ -2,6 +2,14 @@
 	padding: 10px;
 }
 
+.ma {
+	margin: 10px;
+}
+
+.mlSmall {
+	margin-left: 5px;
+}
+
 .w {
 	display: inline-block;
 	vertical-align: top;
@@ -17,12 +25,26 @@
 	width: calc(100% / 3);
 }
 
+.fSmall {
+	font-size: 14px;
+}
+
 .measure {
 	max-width: 30em;
 }
 
 .flex {
 	display: flex;
+}
+
+.flexVerticalCenter {
+	composes: flex;
+	align-items: center;
+}
+
+.flexWrap {
+	composes: flex;
+	flex-wrap: wrap;
 }
 
 .central {
@@ -37,4 +59,32 @@
 
 .ba {
 	border: 1px solid black;
+}
+
+.br {
+	border-right: 1px solid black;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.background {
+	background: white;
+}
+
+.dib {
+	display: inline-block;
+}
+
+.fullHeight {
+	min-height: 100vh;
 }

@@ -1,11 +1,13 @@
 import { h } from 'preact';
 import { Motion, spring, presets } from 'react-motion';
+import cx from 'classnames';
 import { PostPreview } from '../post-preview';
 import styles from './styles.css';
+import atoms from '../../style/atoms.css';
 
 const ROW_LENGTH = 3;
-const BOX_HEIGHT = styles.height;
-const BOX_WIDTH = styles.width;
+const BOX_HEIGHT = 5;
+const BOX_WIDTH = 16; // TODO: share between css and js
 const row = index => Math.ceil((index + 1) / ROW_LENGTH) - 1;
 const column = index => index % ROW_LENGTH;
 
@@ -25,12 +27,16 @@ const style = index => ({
 });
 
 export const Main = ({ selectedPosts }) => (
-	<main class={styles.wrapper}>
+	<main class={atoms.ma}>
 		{selectedPosts.map((post, index) => (
 			<Motion key={post.id} style={style(index)}>
 				{({ translateX, translateY }) => (
 					<div
-						class={styles.post}
+						class={cx(
+							atoms.absolute,
+							atoms.background,
+							styles.post
+						)}
 						style={{
 							transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
 							zIndex:

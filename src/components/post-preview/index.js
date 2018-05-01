@@ -22,6 +22,8 @@ export class PostPreview extends Component {
 				class={cx(
 					atoms.ba,
 					atoms.pa,
+					atoms.pointer,
+					atoms.background,
 					isActive ? styles.active : styles.inactive
 				)}
 				onClick={this.handleClick}

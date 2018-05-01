@@ -1,7 +1,9 @@
 import { h, Component } from 'preact';
 import { formattedTag } from '../../lib/utils';
 import { bind } from 'decko';
+import cx from 'classnames';
 import styles from './styles.css';
+import atoms from '../../style/atoms.css';
 
 export class Checkbox extends Component {
 	constructor() {
@@ -22,14 +24,17 @@ export class Checkbox extends Component {
 
 	render({ value }, { isChecked }) {
 		return (
-			<div class={styles.wrapper}>
-				<div class={styles.inside} onClick={this.handleClick}>
+			<div class={cx(atoms.fSmall, atoms.wOneThird, atoms.pa)}>
+				<div
+					class={cx(atoms.flexVerticalCenter, atoms.pointer)}
+					onClick={this.handleClick}
+				>
 					<div
-						class={
-							isChecked ? styles.tickboxActive : styles.tickbox
-						}
+						class={cx(styles.tickbox, atoms.ba, atoms.relative, {
+							[styles.tickboxActive]: isChecked
+						})}
 					/>
-					<span class={styles.ml1}>{value}</span>
+					<span class={atoms.mlSmall}>{value}</span>
 				</div>
 			</div>
 		);

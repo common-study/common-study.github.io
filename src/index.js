@@ -16,5 +16,8 @@ export const content = () =>
 
 (async () => {
 	const [posts, tags, categories] = await content();
-	render(<App {...{ posts, tags, categories }} />, document.body);
+	render(
+		<App {...{ posts, tags, categories }} />,
+		document.getElementById('app')
+	);
 })();

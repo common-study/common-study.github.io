@@ -1,15 +1,9 @@
-.base {
-	background: inherit;
-	transition: width 0.05s ease-in;
-	cursor: pointer;
-}
-
 .inactive {
-	composes: base;
+	transition: width 0.05s ease-in;
 	width: 100%;
 }
 
 .active {
-	composes: base;
+	transition: width 0.05s ease-out;
 	width: 33rem;
 }

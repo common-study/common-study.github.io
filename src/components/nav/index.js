@@ -1,11 +1,12 @@
 import { h } from 'preact';
+import cx from 'classnames';
 import { Checkbox } from '../checkbox';
 import { uniqueArray } from '../../lib/utils';
-import styles from './styles.css';
+import atoms from '../../style/atoms.css';
 
 export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
-	<nav class={styles.nav}>
-		<div class={styles.tagGroup}>
+	<nav class={cx(atoms.relative, atoms.br, atoms.fullHeight)}>
+		<div class={atoms.flexWrap}>
 			{uniqueArray(
 				posts.map(({ date }) => new Date(date).getFullYear())
 			).map(date => (
@@ -16,7 +17,7 @@ export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
 				/>
 			))}
 		</div>
-		<div class={styles.tagGroup}>
+		<div class={atoms.flexWrap}>
 			{categories.map(({ name }) => (
 				<Checkbox
 					value={name}
@@ -25,7 +26,7 @@ export const Nav = ({ posts, tags, categories, selectTag, deselectTag }) => (
 				/>
 			))}
 		</div>
-		<div class={styles.tagGroup}>
+		<div class={atoms.flexWrap}>
 			{tags.map(({ name }) => (
 				<Checkbox
 					value={name}

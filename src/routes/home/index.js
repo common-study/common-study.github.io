@@ -3,7 +3,8 @@ import { Nav } from '../../components/nav';
 import { Main } from '../../components/main';
 import { fullYear, formattedTag, tagNamesFromIds } from '../../lib/utils';
 import { bind } from 'decko';
-import styles from './styles.css';
+import atoms from '../../style/atoms.css';
+import cx from 'classnames';
 
 export class Home extends Component {
 	constructor() {
@@ -37,17 +38,21 @@ export class Home extends Component {
 			  )
 			: posts;
 		return (
-			<div class={styles.wrapper}>
-				<Nav
-					{...{
-						posts,
-						tags,
-						categories,
-						selectTag: this.selectTag,
-						deselectTag: this.deselectTag
-					}}
-				/>
-				<Main selectedPosts={selectedPosts} />
+			<div class={atoms.flex}>
+				<div class={cx(atoms.wOneThird, atoms.dib)}>
+					<Nav
+						{...{
+							posts,
+							tags,
+							categories,
+							selectTag: this.selectTag,
+							deselectTag: this.deselectTag
+						}}
+					/>
+				</div>
+				<div class={cx(atoms.wTwoThirds, atoms.dib)}>
+					<Main selectedPosts={selectedPosts} />
+				</div>
 			</div>
 		);
 	}

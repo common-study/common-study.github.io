@@ -1,24 +1,6 @@
-.wrapper {
-	padding: 10px;
-	font-size: 14px;
-	width: calc(100% / 3);
-}
-
-.inside {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-}
-
 .tickbox {
 	height: 10px;
 	min-width: 10px;
-	position: relative;
-	border: solid 1px black;
-}
-
-.tickboxActive {
-	composes: tickbox;
 }
 
 .tickboxActive:before {
@@ -31,8 +13,4 @@
 	left: -10px;
 	top: -20px;
 	background-repeat: no-repeat;
-}
-
-.ml1 {
-	margin-left: 5px;
 }
