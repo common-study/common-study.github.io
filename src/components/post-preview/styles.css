@@ -1,0 +1,9 @@
+.inactive {
+	transition: width 0.05s ease-in;
+	width: 100%;
+}
+
+.active {
+	transition: width 0.05s ease-out;
+	width: 33rem;
+}

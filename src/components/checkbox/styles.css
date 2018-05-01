@@ -1,0 +1,16 @@
+.tickbox {
+	height: 10px;
+	min-width: 10px;
+}
+
+.tickboxActive:before {
+	content: '';
+	width: 35px;
+	height: 35px;
+	background-image: url(../../assets/tick.png);
+	background-size: contain;
+	position: absolute;
+	left: -10px;
+	top: -20px;
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,90 @@
+.pa {
+	padding: 10px;
+}
+
+.ma {
+	margin: 10px;
+}
+
+.mlSmall {
+	margin-left: 5px;
+}
+
+.w {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.wTwoThirds {
+	composes: w;
+	width: calc(100% / 3 * 2);
+}
+
+.wOneThird {
+	composes: w;
+	width: calc(100% / 3);
+}
+
+.fSmall {
+	font-size: 14px;
+}
+
+.measure {
+	max-width: 30em;
+}
+
+.flex {
+	display: flex;
+}
+
+.flexVerticalCenter {
+	composes: flex;
+	align-items: center;
+}
+
+.flexWrap {
+	composes: flex;
+	flex-wrap: wrap;
+}
+
+.central {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.wpContent div {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ba {
+	border: 1px solid black;
+}
+
+.br {
+	border-right: 1px solid black;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.background {
+	background: white;
+}
+
+.dib {
+	display: inline-block;
+}
+
+.fullHeight {
+	min-height: 100vh;
+}

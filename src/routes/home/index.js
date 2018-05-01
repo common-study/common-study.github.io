@@ -1,8 +1,10 @@
 import { h, Component } from 'preact';
 import { Nav } from '../../components/nav';
-import { PostPreview } from '../../components/post-preview';
+import { Main } from '../../components/main';
 import { fullYear, formattedTag, tagNamesFromIds } from '../../lib/utils';
 import { bind } from 'decko';
+import atoms from '../../style/atoms.css';
+import cx from 'classnames';
 
 export class Home extends Component {
 	constructor() {
@@ -36,21 +38,21 @@ export class Home extends Component {
 			  )
 			: posts;
 		return (
-			<div class="flex vh-100">
-				<Nav
-					{...{
-						posts,
-						tags,
-						categories,
-						selectTag: this.selectTag,
-						deselectTag: this.deselectTag
-					}}
-				/>
-				<main class="dib v-top w-two-thirds">
-					<div class="js-posts-container flex flex-wrap pa3">
-						{selectedPosts.map(post => <PostPreview post={post} />)}
-					</div>
-				</main>
+			<div class={atoms.flex}>
+				<div class={cx(atoms.wOneThird, atoms.dib)}>
+					<Nav
+						{...{
+							posts,
+							tags,
+							categories,
+							selectTag: this.selectTag,
+							deselectTag: this.deselectTag
+						}}
+					/>
+				</div>
+				<div class={cx(atoms.wTwoThirds, atoms.dib)}>
+					<Main selectedPosts={selectedPosts} />
+				</div>
 			</div>
 		);
 	}
