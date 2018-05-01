@@ -1,3 +1,6 @@
+@value width: 16;
+@value height: 5;
+
 .post {
 	position: absolute;
 	background: white;

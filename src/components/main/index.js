@@ -4,8 +4,8 @@ import { PostPreview } from '../post-preview';
 import styles from './styles.css';
 
 const ROW_LENGTH = 3;
-const BOX_HEIGHT = 5;
-const BOX_WIDTH = 16;
+const BOX_HEIGHT = styles.height;
+const BOX_WIDTH = styles.width;
 const row = index => Math.ceil((index + 1) / ROW_LENGTH) - 1;
 const column = index => index % ROW_LENGTH;
 
