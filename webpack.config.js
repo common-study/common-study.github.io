@@ -35,10 +35,21 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						query: {
-							url: false,
 							modules: true,
 							sourceMap: true,
 							localIdentName: '[name]__[local]___[hash:base64:5]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.(png|jp(e*)g|svg)$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 8000, // Convert images < 8kb to base64 strings
+							name: 'images/[hash]-[name].[ext]' // TODO: for images larger than 8kb we need to have the index.html in the dist folder
 						}
 					}
 				]
