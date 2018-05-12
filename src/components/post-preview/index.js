@@ -4,11 +4,13 @@ import { bind } from 'decko';
 import styles from './styles.css';
 import atoms from '../../style/atoms.css';
 import cx from 'classnames';
+import { randomFontSet } from '../../lib/utils';
 
 export class PostPreview extends Component {
 	constructor() {
 		super();
 		this.state.isActive = false;
+		this.state.fonts = randomFontSet();
 	}
 
 	@bind
@@ -16,7 +18,7 @@ export class PostPreview extends Component {
 		this.setState({ isActive: !this.state.isActive });
 	}
 
-	render({ post }, { isActive }) {
+	render({ post }, { isActive, fonts }) {
 		return (
 			<div
 				class={cx(
@@ -24,7 +26,8 @@ export class PostPreview extends Component {
 					atoms.pa,
 					atoms.pointer,
 					atoms.background,
-					isActive ? styles.active : styles.inactive
+					isActive ? styles.active : styles.inactive,
+					fonts.header
 				)}
 				onClick={this.handleClick}
 			>
@@ -32,7 +35,7 @@ export class PostPreview extends Component {
 				{isActive ? (
 					<div>
 						<div
-							class={atoms.wpContent}
+							class={cx(atoms.wpContent, fonts.body)}
 							dangerouslySetInnerHTML={{
 								__html: post.content.rendered
 							}}

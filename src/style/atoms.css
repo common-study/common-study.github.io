@@ -88,3 +88,9 @@
 .fullHeight {
 	min-height: 100vh;
 }
+
+.sansSerif {
+	font-family: 'Helvetica Neue', arial, sans-serif;
+}
+
+// TODO: add other webfonts here

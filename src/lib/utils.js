@@ -1,4 +1,5 @@
 export const uniqueArray = array => [...new Set(array)];
+import atoms from '../style/atoms.css';
 
 export const formattedTag = tag =>
 	String(tag)
@@ -18,3 +19,14 @@ export const formattedDate = date =>
 		year: 'numeric',
 		day: 'numeric'
 	});
+
+export const randomFontSet = () => {
+	const fontsList = [
+		{
+			header: atoms.sansSerif,
+			body: atoms.sansSerif
+		}
+		// ADD MORE FONT OPTIONS HERE
+	];
+	return fontsList[Math.floor(Math.random() * fontsList.length)];
+};
