@@ -26,17 +26,24 @@ export class Home extends Component {
 		});
 	}
 
+	get selectedPosts() {
+		if (this.state.selectedTags.length) {
+			return this.props.posts.filter(post => {
+				const postTags = tagNamesFromIds(
+					[].concat(post.tags, post.categories),
+					[].concat(this.props.tags, this.props.categories)
+				).concat(formattedTag(fullYear(post.date)));
+
+				return this.state.selectedTags.every(selectedTag =>
+					postTags.includes(selectedTag)
+				);
+			});
+		} else {
+			return this.props.posts;
+		}
+	}
+
 	render({ posts, tags, categories }, { selectedTags }) {
-		const selectedPosts = selectedTags.length
-			? posts.filter(post =>
-					tagNamesFromIds(
-						[].concat(post.tags, post.categories),
-						[].concat(tags, categories)
-					)
-						.concat(formattedTag(fullYear(post.date)))
-						.some(tag => selectedTags.includes(tag))
-			  )
-			: posts;
 		return (
 			<div class={atoms.flex}>
 				<div class={cx(atoms.wOneThird, atoms.dib)}>
@@ -51,7 +58,7 @@ export class Home extends Component {
 					/>
 				</div>
 				<div class={cx(atoms.wTwoThirds, atoms.dib)}>
-					<Main selectedPosts={selectedPosts} />
+					<Main selectedPosts={this.selectedPosts} />
 				</div>
 			</div>
 		);
