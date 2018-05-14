@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import { Motion, spring, presets } from 'react-motion';
 import cx from 'classnames';
 import { PostPreview } from '../post-preview';
@@ -26,27 +26,53 @@ const style = index => ({
 	)
 });
 
-export const Main = ({ selectedPosts }) => (
-	<main class={atoms.ma}>
-		{selectedPosts.map((post, index) => (
-			<Motion key={post.id} style={style(index)}>
-				{({ translateX, translateY }) => (
-					<div
-						class={cx(
-							atoms.absolute,
-							atoms.background,
-							styles.post
+export class Main extends Component {
+	constructor() {
+		super();
+		this.state = {
+			activePostId: null
+		};
+	}
+
+	activatePost(id) {
+		this.setState({
+			activePostId: id
+		});
+	}
+
+	render({ selectedPosts }, { activePostId }) {
+		return (
+			<main class={atoms.ma}>
+				{selectedPosts.map((post, index) => (
+					<Motion key={post.id} style={style(index)}>
+						{({ translateX, translateY }) => (
+							<div
+								class={cx(
+									atoms.absolute,
+									atoms.background,
+									styles.post
+								)}
+								style={{
+									transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
+									zIndex:
+										index === 0
+											? 99
+											: selectedPosts.length - index
+								}}
+							>
+								<PostPreview
+									post={post}
+									onClick={this.activatePost.bind(
+										this,
+										post.id
+									)}
+									isActive={post.id === activePostId}
+								/>
+							</div>
 						)}
-						style={{
-							transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
-							zIndex:
-								index === 0 ? 99 : selectedPosts.length - index
-						}}
-					>
-						<PostPreview post={post} />
-					</div>
-				)}
-			</Motion>
-		))}
-	</main>
-);
+					</Motion>
+				))}
+			</main>
+		);
+	}
+}

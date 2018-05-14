@@ -9,16 +9,10 @@ import { randomFontSet } from '../../lib/utils';
 export class PostPreview extends Component {
 	constructor() {
 		super();
-		this.state.isActive = false;
 		this.state.fonts = randomFontSet();
 	}
 
-	@bind
-	handleClick() {
-		this.setState({ isActive: !this.state.isActive });
-	}
-
-	render({ post }, { isActive, fonts }) {
+	render({ post, isActive, onClick }, { fonts }) {
 		return (
 			<div
 				class={cx(
@@ -29,7 +23,7 @@ export class PostPreview extends Component {
 					isActive ? styles.active : styles.inactive,
 					fonts.header
 				)}
-				onClick={this.handleClick}
+				onClick={onClick}
 			>
 				<h3>{post.title.rendered}</h3>
 				{isActive ? (
