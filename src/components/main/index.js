@@ -5,46 +5,55 @@ import { PostPreview } from '../post-preview';
 import styles from './styles.css';
 import atoms from '../../style/atoms.css';
 
-const ROW_LENGTH = 3;
-const BOX_HEIGHT = 5;
-const BOX_WIDTH = 16; // TODO: share between css and js
-const row = index => Math.ceil((index + 1) / ROW_LENGTH) - 1;
-const column = index => index % ROW_LENGTH;
-
-const style = index => ({
-	translateX: spring(
-		BOX_WIDTH * column(index) +
-			// hack to add a gutter
-			column(index),
-		presets.stiff
-	),
-	translateY: spring(
-		BOX_HEIGHT * row(index) +
-			// hack to add a gutter
-			row(index),
-		presets.stiff
-	)
-});
-
 export class Main extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+		this.ROW_LENGTH = this.props.rowLength || 3;
+		this.BOX_HEIGHT = this.props.boxHeight || 5;
+		this.BOX_WIDTH = this.props.boxWidth || 16; // TODO: share between css and js
 		this.state = {
 			activePostId: null
 		};
 	}
 
-	activatePost(id) {
-		this.setState({
-			activePostId: id
-		});
+	row(index) {
+		return Math.ceil((index + 1) / this.ROW_LENGTH) - 1;
+	}
+
+	column(index) {
+		return index % this.ROW_LENGTH;
+	}
+
+	style(index) {
+		return {
+			translateX: spring(
+				this.BOX_WIDTH * this.column(index) + this.column(index), // times two to hack a gutter
+				presets.stiff
+			),
+			translateY: spring(
+				this.BOX_HEIGHT * this.row(index) + this.row(index),
+				presets.stiff
+			)
+		};
+	}
+
+	toggleActive(id) {
+		if (this.state.activePostId === id) {
+			this.setState({
+				activePostId: null
+			});
+		} else {
+			this.setState({
+				activePostId: id
+			});
+		}
 	}
 
 	render({ selectedPosts }, { activePostId }) {
 		return (
 			<main class={atoms.ma}>
 				{selectedPosts.map((post, index) => (
-					<Motion key={post.id} style={style(index)}>
+					<Motion key={post.id} style={this.style(index)}>
 						{({ translateX, translateY }) => (
 							<div
 								class={cx(
@@ -62,7 +71,7 @@ export class Main extends Component {
 							>
 								<PostPreview
 									post={post}
-									onClick={this.activatePost.bind(
+									onClick={this.toggleActive.bind(
 										this,
 										post.id
 									)}

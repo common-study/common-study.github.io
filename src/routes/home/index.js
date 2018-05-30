@@ -5,6 +5,45 @@ import { fullYear, formattedTag, tagNamesFromIds } from '../../lib/utils';
 import { bind } from 'decko';
 import atoms from '../../style/atoms.css';
 import cx from 'classnames';
+import Media from 'react-media';
+
+class MobileNav extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			open: false
+		};
+	}
+
+	@bind
+	handleClick() {
+		this.setState(prev => ({
+			open: !prev.open
+		}));
+	}
+
+	render(props, { open }) {
+		return (
+			<div>
+				{open ? (
+					<div
+						style={{
+							position: 'absolute',
+							background: 'white',
+							zIndex: 100,
+							top: 0
+						}}
+					>
+						<button onClick={this.handleClick}>close</button>
+						<Nav {...props} />
+					</div>
+				) : (
+					<button onClick={this.handleClick}>menu</button>
+				)}
+			</div>
+		);
+	}
+}
 
 export class Home extends Component {
 	constructor() {
@@ -45,22 +84,46 @@ export class Home extends Component {
 
 	render({ posts, tags, categories }, { selectedTags }) {
 		return (
-			<div class={atoms.flex}>
-				<div class={cx(atoms.wOneThird, atoms.dib)}>
-					<Nav
-						{...{
-							posts,
-							tags,
-							categories,
-							selectTag: this.selectTag,
-							deselectTag: this.deselectTag
-						}}
-					/>
-				</div>
-				<div class={cx(atoms.wTwoThirds, atoms.dib)}>
-					<Main selectedPosts={this.selectedPosts} />
-				</div>
-			</div>
+			<Media query="(max-width: 1000px)">
+				{matches =>
+					matches ? (
+						<span>
+							<MobileNav
+								{...{
+									posts,
+									tags,
+									categories,
+									selectTag: this.selectTag,
+									deselectTag: this.deselectTag,
+									selectedTags: this.state.selectedTags
+								}}
+							/>
+							<Main
+								selectedPosts={this.selectedPosts}
+								rowLength={2}
+							/>
+						</span>
+					) : (
+						<div class={atoms.flex}>
+							<div class={cx(atoms.wOneThird, atoms.dib)}>
+								<Nav
+									{...{
+										posts,
+										tags,
+										categories,
+										selectTag: this.selectTag,
+										deselectTag: this.deselectTag,
+										selectedTags: this.state.selectedTags
+									}}
+								/>
+							</div>
+							<div class={cx(atoms.wTwoThirds, atoms.dib)}>
+								<Main selectedPosts={this.selectedPosts} />
+							</div>
+						</div>
+					)
+				}
+			</Media>
 		);
 	}
 }
