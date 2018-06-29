@@ -1,9 +1,36 @@
 .inactive {
 	transition: width 0.05s ease-in;
+	transition: transform 0.5s ease-out;
 	width: 100%;
+	transform: translate3D(0, 0, 0);
 }
 
 .active {
 	transition: width 0.05s ease-out;
+	transition: transform 0.5s ease-out;
 	width: 33rem;
+	transform: translate3D(-3rem, -0.5rem, 0);
+}
+
+.active.start {
+	transform: translate3D(2rem, -0.5rem, 0);
+}
+
+.active.end {
+	transform: translate3D(-20rem, -0.5rem, 0);
+}
+
+@media (max-width: 1250px) {
+	.active.start {
+		transform: translate3D(0, -0.5rem, 0);
+	}
+	.active.end {
+		transform: translate3D(-17rem, -0.5rem, 0);
+	}
+}
+
+@media (max-width: 560px) {
+	.active {
+		width: 100%;
+	}
 }

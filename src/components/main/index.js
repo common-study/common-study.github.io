@@ -9,7 +9,7 @@ export class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.ROW_LENGTH = this.props.rowLength || 3;
-		this.BOX_HEIGHT = this.props.boxHeight || 5;
+		this.BOX_HEIGHT = this.props.boxHeight || 7;
 		this.BOX_WIDTH = this.props.boxWidth || 16; // TODO: share between css and js
 		this.state = {
 			activePostId: null
@@ -62,9 +62,10 @@ export class Main extends Component {
 									styles.post
 								)}
 								style={{
+									height: `${this.BOX_HEIGHT}em`,
 									transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
 									zIndex:
-										index === 0
+										index === 0 || post.id === activePostId
 											? 99
 											: selectedPosts.length - index
 								}}
@@ -76,6 +77,19 @@ export class Main extends Component {
 										post.id
 									)}
 									isActive={post.id === activePostId}
+									position={
+										this.ROW_LENGTH === 1
+											? 'start'
+											: (index + 1) %
+											  this.ROW_LENGTH ===
+											  1
+												? 'start'
+												: (index + 1) %
+												  this.ROW_LENGTH ===
+												  0
+													? 'end'
+													: 'mid'
+									}
 								/>
 							</div>
 						)}

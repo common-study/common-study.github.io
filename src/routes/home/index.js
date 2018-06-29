@@ -28,7 +28,7 @@ class MobileNav extends Component {
 				{open ? (
 					<div
 						style={{
-							position: 'absolute',
+							position: 'fixed',
 							background: 'white',
 							zIndex: 100,
 							top: 0
@@ -98,10 +98,25 @@ export class Home extends Component {
 									selectedTags: this.state.selectedTags
 								}}
 							/>
-							<Main
-								selectedPosts={this.selectedPosts}
-								rowLength={2}
-							/>
+							<Media query="(min-width: 560px)">
+								{matches =>
+									matches ? (
+										<Main
+											selectedPosts={this.selectedPosts}
+											rowLength={2}
+										/>
+									) : (
+										<div>
+											<Main
+												selectedPosts={
+													this.selectedPosts
+												}
+												rowLength={1}
+											/>
+										</div>
+									)
+								}
+							</Media>
 						</span>
 					) : (
 						<div class={atoms.flex}>
@@ -118,7 +133,40 @@ export class Home extends Component {
 								/>
 							</div>
 							<div class={cx(atoms.wTwoThirds, atoms.dib)}>
-								<Main selectedPosts={this.selectedPosts} />
+								<Media query="(min-width: 1250px)">
+									{matches =>
+										matches ? (
+											<Media query="(min-width: 1650px)">
+												{matches =>
+													matches ? (
+														<Main
+															selectedPosts={
+																this
+																	.selectedPosts
+															}
+															rowLength={4}
+														/>
+													) : (
+														<Main
+															selectedPosts={
+																this
+																	.selectedPosts
+															}
+															rowLength={3}
+														/>
+													)
+												}
+											</Media>
+										) : (
+											<Main
+												selectedPosts={
+													this.selectedPosts
+												}
+												rowLength={2}
+											/>
+										)
+									}
+								</Media>
 							</div>
 						</div>
 					)

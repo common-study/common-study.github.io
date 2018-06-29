@@ -12,7 +12,7 @@ export class PostPreview extends Component {
 		this.state.fonts = randomFontSet();
 	}
 
-	render({ post, isActive, onClick }, { fonts }) {
+	render({ post, isActive, onClick, position }, { fonts }) {
 		return (
 			<div
 				class={cx(
@@ -21,7 +21,10 @@ export class PostPreview extends Component {
 					atoms.pointer,
 					atoms.background,
 					isActive ? styles.active : styles.inactive,
-					fonts.header
+					fonts.header,
+					isActive ? '' : atoms.parentHeight,
+					atoms.overflowHidden,
+					styles[position]
 				)}
 				onClick={onClick}
 			>
@@ -31,7 +34,11 @@ export class PostPreview extends Component {
 						<div
 							class={cx(atoms.wpContent, fonts.body)}
 							dangerouslySetInnerHTML={{
-								__html: post.content.rendered
+								__html:
+									post.content.rendered.length < 750
+										? post.content.rendered
+										: post.content.rendered.slice(0, 750) +
+										  '...'
 							}}
 						/>
 						<Link to={`/?post=${post.slug}`}>more</Link>
