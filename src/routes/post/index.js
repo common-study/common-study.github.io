@@ -33,9 +33,9 @@ export const PostPage = ({ tags, categories, post }) => (
 	<div class={styles.wrapper}>
 		<Header />
 		<main class={atoms.central}>
-			<div class={atoms.wOneThird}>
+			{/* <div class={atoms.wOneThird}>
 				<PostDetails {...{ post, tags, categories }} />
-			</div>
+			</div> */}
 			<div class={atoms.wTwoThirds}>
 				<Post post={post} />
 			</div>
