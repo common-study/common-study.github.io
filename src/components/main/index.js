@@ -1,52 +1,101 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import { Motion, spring, presets } from 'react-motion';
 import cx from 'classnames';
 import { PostPreview } from '../post-preview';
 import styles from './styles.css';
 import atoms from '../../style/atoms.css';
 
-const ROW_LENGTH = 3;
-const BOX_HEIGHT = 5;
-const BOX_WIDTH = 16; // TODO: share between css and js
-const row = index => Math.ceil((index + 1) / ROW_LENGTH) - 1;
-const column = index => index % ROW_LENGTH;
+export class Main extends Component {
+	constructor(props) {
+		super(props);
+		this.ROW_LENGTH = this.props.rowLength || 3;
+		this.BOX_HEIGHT = this.props.boxHeight || 7;
+		this.BOX_WIDTH = this.props.boxWidth || 16; // TODO: share between css and js
+		this.state = {
+			activePostId: null
+		};
+	}
 
-const style = index => ({
-	translateX: spring(
-		BOX_WIDTH * column(index) +
-			// hack to add a gutter
-			column(index),
-		presets.stiff
-	),
-	translateY: spring(
-		BOX_HEIGHT * row(index) +
-			// hack to add a gutter
-			row(index),
-		presets.stiff
-	)
-});
+	row(index) {
+		return Math.ceil((index + 1) / this.ROW_LENGTH) - 1;
+	}
 
-export const Main = ({ selectedPosts }) => (
-	<main class={atoms.ma}>
-		{selectedPosts.map((post, index) => (
-			<Motion key={post.id} style={style(index)}>
-				{({ translateX, translateY }) => (
-					<div
-						class={cx(
-							atoms.absolute,
-							atoms.background,
-							styles.post
+	column(index) {
+		return index % this.ROW_LENGTH;
+	}
+
+	style(index) {
+		return {
+			translateX: spring(
+				this.BOX_WIDTH * this.column(index) + this.column(index), // times two to hack a gutter
+				presets.stiff
+			),
+			translateY: spring(
+				this.BOX_HEIGHT * this.row(index) + this.row(index),
+				presets.stiff
+			)
+		};
+	}
+
+	toggleActive(id) {
+		if (this.state.activePostId === id) {
+			this.setState({
+				activePostId: null
+			});
+		} else {
+			this.setState({
+				activePostId: id
+			});
+		}
+	}
+
+	render({ selectedPosts }, { activePostId }) {
+		return (
+			<main class={atoms.ma}>
+				{selectedPosts.map((post, index) => (
+					<Motion key={post.id} style={this.style(index)}>
+						{({ translateX, translateY }) => (
+							<div
+								class={cx(
+									atoms.absolute,
+									atoms.background,
+									styles.post
+								)}
+								style={{
+									height: `${this.BOX_HEIGHT}em`,
+									transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
+									zIndex:
+										index === 0 || post.id === activePostId
+											? 99
+											: selectedPosts.length - index
+								}}
+							>
+								<PostPreview
+									post={post}
+									onClick={this.toggleActive.bind(
+										this,
+										post.id
+									)}
+									isActive={post.id === activePostId}
+									position={
+										this.ROW_LENGTH === 1
+											? 'start'
+											: (index + 1) %
+											  this.ROW_LENGTH ===
+											  1
+												? 'start'
+												: (index + 1) %
+												  this.ROW_LENGTH ===
+												  0
+													? 'end'
+													: 'mid'
+									}
+								/>
+							</div>
 						)}
-						style={{
-							transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
-							zIndex:
-								index === 0 ? 99 : selectedPosts.length - index
-						}}
-					>
-						<PostPreview post={post} />
-					</div>
-				)}
-			</Motion>
-		))}
-	</main>
-);
+					</Motion>
+				))}
+			</main>
+		);
+	}
+}
