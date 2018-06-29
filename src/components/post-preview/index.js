@@ -28,7 +28,7 @@ export class PostPreview extends Component {
 				)}
 				onClick={onClick}
 			>
-				<h3>{post.title.rendered}</h3>
+				<h3>{post.title.rendered.replace(/&nbsp;/g, ' ')}</h3>
 				{isActive ? (
 					<div>
 						<div
