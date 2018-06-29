@@ -25,8 +25,52 @@ export const randomFontSet = () => {
 		{
 			header: atoms.sansSerif,
 			body: atoms.sansSerif
-		}
+		},
 		// ADD MORE FONT OPTIONS HERE
+		{
+			header: atoms.serif,
+			body: atoms.serif
+		},
+		{
+			header: atoms.monospace,
+			body: atoms.monospace
+		},
+		{
+			header: atoms.palatino,
+			body: atoms.palatino
+		},
+		{
+			header: atoms.garamond,
+			body: atoms.garamond
+		},
+		{
+			header: atoms.bookman,
+			body: atoms.bookman
+		},
+		{
+			header: atoms.comicSans,
+			body: atoms.comicSans
+		},
+		{
+			header: atoms.avantGarde,
+			body: atoms.avantGarde
+		},
+		{
+			header: atoms.trebuchet,
+			body: atoms.trebuchet
+		},
+		{
+			header: atoms.impact,
+			body: atoms.impact
+		},
+		{
+			header: atoms.verdana,
+			body: atoms.verdana
+		},
+		{
+			header: atoms.georgia,
+			body: atoms.georgia
+		}
 	];
 	return fontsList[Math.floor(Math.random() * fontsList.length)];
 };
