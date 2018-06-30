@@ -101,4 +101,46 @@
 	font-family: 'Helvetica Neue', arial, sans-serif;
 }
 
-// TODO: add other webfonts here
+.serif {
+	font-family: 'Times New Roman', serif;
+}
+
+.monospace {
+	font-family: 'Courier New', monospace;
+}
+
+.palatino {
+	font-family: 'Palatino', serif;
+}
+
+.garamond {
+	font-family: 'Garamond', serif;
+}
+
+.bookman {
+	font-family: 'Bookman', serif;
+}
+
+.comicSans {
+	font-family: 'Comic Sans MS', fantasy;
+}
+
+.avantGarde {
+	font-family: 'Avant Garde', serif;
+}
+
+.trebuchet {
+	font-family: 'Trebuchet', sans-serif;
+}
+
+.impact {
+	font-family: 'Impact', sans-serif;
+}
+
+.verdana {
+	font-family: 'Verdana', serif;
+}
+
+.georgia {
+	font-family: 'Georgia', serif;
+}
