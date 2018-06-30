@@ -3,6 +3,9 @@ import { Header } from '../../components/header';
 import { formattedDate, tagNamesFromIds } from '../../lib/utils';
 import styles from './styles.css';
 import atoms from '../../style/atoms.css';
+import { randomFontSet } from '../../lib/utils';
+
+const fonts = randomFontSet();
 
 const PostDetails = ({ post, tags, categories }) => (
 	<section class={atoms.pa}>
@@ -21,7 +24,7 @@ const PostDetails = ({ post, tags, categories }) => (
 
 const Post = ({ post }) => (
 	<section class={atoms.pa}>
-		<h1>{post.title.rendered}</h1>
+		<h1 class={fonts.header}>{post.title.rendered}</h1>
 		<div
 			class={`${atoms.measure} ${atoms.wpContent}`}
 			dangerouslySetInnerHTML={{ __html: post.content.rendered }}
