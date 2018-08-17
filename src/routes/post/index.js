@@ -17,7 +17,9 @@ const PostDetails = ({ post, tags, categories }) => (
 			{tagNamesFromIds(
 				[].concat(post.tags, post.categories),
 				[].concat(tags, categories)
-			).map(tag => <li>{tag}</li>)}
+			).map(tag => (
+				<li>{tag}</li>
+			))}
 		</ul>
 	</section>
 );
@@ -39,9 +41,7 @@ export const PostPage = ({ tags, categories, post }) => (
 			{/* <div class={atoms.wOneThird}>
 				<PostDetails {...{ post, tags, categories }} />
 			</div> */}
-			<div class={atoms.wTwoThirds}>
-				<Post post={post} />
-			</div>
+			<Post post={post} />
 		</main>
 	</div>
 );
