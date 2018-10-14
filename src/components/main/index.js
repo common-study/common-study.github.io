@@ -51,51 +51,55 @@ export class Main extends Component {
 
 	render({ selectedPosts }, { activePostId }) {
 		return (
-			<main class={atoms.ma}>
-				{selectedPosts.map((post, index) => (
-					<Motion key={post.id} style={this.style(index)}>
-						{({ translateX, translateY }) => (
-							<div
-								class={cx(
-									atoms.absolute,
-									atoms.background,
-									styles.post
-								)}
-								style={{
-									height: `${this.BOX_HEIGHT}em`,
-									transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
-									zIndex:
-										index === 0 || post.id === activePostId
-											? 99
-											: selectedPosts.length - index
-								}}
-							>
-								<PostPreview
-									post={post}
-									onClick={this.toggleActive.bind(
-										this,
-										post.id
+			<div>
+				{/* <img class={styles.logo} /> */}
+				<main class={atoms.ma}>
+					{selectedPosts.map((post, index) => (
+						<Motion key={post.id} style={this.style(index)}>
+							{({ translateX, translateY }) => (
+								<div
+									class={cx(
+										atoms.absolute,
+										atoms.background,
+										styles.post
 									)}
-									isActive={post.id === activePostId}
-									position={
-										this.ROW_LENGTH === 1
-											? 'start'
-											: (index + 1) %
-											  this.ROW_LENGTH ===
-											  1
+									style={{
+										height: `${this.BOX_HEIGHT}em`,
+										transform: `translate3d(${translateX}rem, ${translateY}rem, 0)`,
+										zIndex:
+											index === 0 ||
+											post.id === activePostId
+												? 99
+												: selectedPosts.length - index
+									}}
+								>
+									<PostPreview
+										post={post}
+										onClick={this.toggleActive.bind(
+											this,
+											post.id
+										)}
+										isActive={post.id === activePostId}
+										position={
+											this.ROW_LENGTH === 1
 												? 'start'
 												: (index + 1) %
 												  this.ROW_LENGTH ===
-												  0
-													? 'end'
-													: 'mid'
-									}
-								/>
-							</div>
-						)}
-					</Motion>
-				))}
-			</main>
+												  1
+													? 'start'
+													: (index + 1) %
+													  this.ROW_LENGTH ===
+													  0
+														? 'end'
+														: 'mid'
+										}
+									/>
+								</div>
+							)}
+						</Motion>
+					))}
+				</main>
+			</div>
 		);
 	}
 }
