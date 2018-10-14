@@ -17,7 +17,7 @@ export class Checkbox extends Component {
 		return (
 			<div class={cx(atoms.fSmall, atoms.wOneThird, atoms.pa)}>
 				<div
-					class={cx(atoms.flexVerticalCenter, atoms.pointer)}
+					class={cx(atoms.flex, atoms.pointer, styles.checkboxInner)}
 					onClick={this.handleClick}
 				>
 					<div
