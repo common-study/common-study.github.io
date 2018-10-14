@@ -26,14 +26,19 @@ export const Nav = ({
 			))}
 		</div> */}
 		<div class={atoms.flexWrap}>
-			{categories.map(({ name }) => (
-				<Checkbox
-					value={name}
-					selectTag={selectTag}
-					deselectTag={deselectTag}
-					isChecked={selectedTags.includes(formattedTag(name))}
-				/>
-			))}
+			{categories
+				.sort(
+					(a, b) =>
+						a.name === 'Upcoming' ? -1 : b === 'Upcoming' ? 1 : 0
+				)
+				.map(({ name }) => (
+					<Checkbox
+						value={name}
+						selectTag={selectTag}
+						deselectTag={deselectTag}
+						isChecked={selectedTags.includes(formattedTag(name))}
+					/>
+				))}
 		</div>
 		<div class={atoms.flexWrap}>
 			{tags.map(({ name }) => (
